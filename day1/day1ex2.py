@@ -1,5 +1,5 @@
 with open('calibrations.txt', 'r') as file:
-    content = file.readlines()
+    content = file.read()
 
 
 digits = {
@@ -39,7 +39,7 @@ def find_first_digit(line: str) -> str:
 
         else:
             # If a spelled digit is found
-            substring = line[:i]
+            substring = line[:i+1]
             # Iterate through each spelled digit and digit pair
             for spelled_digit, digit in digits.items():
                 # If the spelled digit is found in the substring
@@ -116,7 +116,7 @@ def get_sum_of_first_and_last_digits(text: str) -> int:
     """
 
     numbers = []
-    for line in content:
+    for line in text.splitlines():
         numbers.append(find_first_and_last_digit(line))
 
     return sum(int(i) for i in numbers)
